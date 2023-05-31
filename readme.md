@@ -12,6 +12,14 @@ Utilize o `Spring Dashboard` ou execute pelo maven no terminal com o comando:
 mvn spring-boot:run
 ```
 
+A porta padrão da aplicação é 8080.
+
+Para alterar basta adicionar no arquivo `application.properties` o valor:
+
+server.port=3000
+
+ou qualquer outra porta desejada.
+
 ---
 
 ### Para começar do Zero ☕️
