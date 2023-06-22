@@ -6,3 +6,10 @@ spring:
         password: root
     jpa:
         show-sql: true
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: 204233493609-sjit0c1ckhsj95a7okspi1fqjeenl77c.apps.googleusercontent.com
+                        client-secret: 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

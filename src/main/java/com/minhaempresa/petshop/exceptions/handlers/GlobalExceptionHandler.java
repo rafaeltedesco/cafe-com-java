@@ -24,31 +24,9 @@ public class GlobalExceptionHandler {
                 put("message", ex.getMessage());
                 put("statusCode", "500");
                 put("trace", ex.getStackTrace().toString());
+                put("cause", ex.getCause().toString());
             }
         };
         return response;
     }
-
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseStatus(code = HttpStatus.NOT_FOUND)
-    public Map<String, String> handleEntityNotFoundException(NotFoundException ex) {
-        return new HashMap<>() {
-            {
-                put("message", ex.getMessage());
-                put("statusCode", "404");
-            }
-        };
-    }
-
-    @ExceptionHandler(UnprocessableEntityException.class)
-    @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
-    public Map<String, String> handleUnprocessableEntityException(UnprocessableEntityException ex) {
-        return new HashMap<>() {
-            {
-                put("message", ex.getMessage());
-                put("statusCode", "422");
-            }
-        };
-    }
-
 }
