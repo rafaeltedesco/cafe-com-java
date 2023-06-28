@@ -16,6 +16,10 @@ public class Pet {
     private Long id;
     private String nickname;
     private PetKind kind;
+
+    @ManyToOne
+    @JoinColumn(name="owner_id")
+    private Owner owner;
     public Pet(PetPayloadDTO petDTO) {
         this.nickname = petDTO.nickname();
         this.kind = petDTO.kind();

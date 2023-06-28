@@ -10,4 +10,6 @@ import java.util.Optional;
 
 public interface PetRepository extends JpaRepository<Pet, Long> {
     public List<Pet> findByNicknameContaining(String nickname);
+
+    public Optional<Pet> findByNickname(String nickname);
 }

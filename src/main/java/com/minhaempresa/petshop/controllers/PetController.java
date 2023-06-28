@@ -1,7 +1,6 @@
 package com.minhaempresa.petshop.controllers;
 
-import com.minhaempresa.petshop.dtos.PetPayloadDTO;
-import com.minhaempresa.petshop.dtos.PetResponseDTO;
+import com.minhaempresa.petshop.dtos.*;
 import com.minhaempresa.petshop.entities.Pet;
 import com.minhaempresa.petshop.services.PetService;
 import jakarta.websocket.server.PathParam;
@@ -19,7 +18,7 @@ public class PetController {
     private PetService petService;
 
     @PostMapping
-    public PetResponseDTO create(@RequestBody PetPayloadDTO petDto) {
+    public PetResponseClassDTO create(@RequestBody PetPayloadDTO petDto) {
         return this.petService.create(petDto);
     }
     @GetMapping
@@ -31,4 +30,8 @@ public class PetController {
         return this.petService.findById(id);
     }
 
+    @PatchMapping("{id}")
+    public PetResponseDTO registerOwner(@PathVariable Long id, @RequestBody RegisterOwnerPayloadDTO ownerDto) {
+        return this.petService.registerOwner(id, ownerDto.ownerId());
+    }
 }
