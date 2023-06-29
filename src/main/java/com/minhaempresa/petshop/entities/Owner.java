@@ -1,11 +1,13 @@
 package com.minhaempresa.petshop.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.minhaempresa.petshop.dtos.OwnerPayloadDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name = "owners")
@@ -20,9 +22,9 @@ public class Owner {
     private String name;
     private String email;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "owner")
-    private Set<Pet> pet;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private List<Pet> pet;
 
     private Owner(OwnerPayloadDTO ownerDto) {
         this.name = ownerDto.name();

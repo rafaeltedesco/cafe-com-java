@@ -16,9 +16,10 @@ public class OwnerController {
     @Autowired
     private OwnerService ownerService;
 
+
     @GetMapping
     public List<OwnerResponseDTO> findAll() {
-        return this.ownerService.findAll().stream().map(OwnerResponseDTO::fromEntity).toList();
+        return this.ownerService.findAll();
     }
 
     @GetMapping("{id}")

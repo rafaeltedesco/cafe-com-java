@@ -1,5 +1,6 @@
 package com.minhaempresa.petshop.services;
 
+import com.minhaempresa.petshop.dtos.PetBuilderDto;
 import com.minhaempresa.petshop.dtos.PetPayloadDTO;
 import com.minhaempresa.petshop.dtos.PetResponseClassDTO;
 import com.minhaempresa.petshop.dtos.PetResponseDTO;
@@ -33,10 +34,15 @@ public class PetService {
         return this.modelMapper.map(newPet, PetResponseClassDTO.class);
     }
 
-    public List<PetResponseDTO> findAll() {
+    public List<PetBuilderDto> findAll() {
         List<Pet> pets = this.petRepository.findAll();
         return pets.stream()
-                .map(PetResponseDTO::fromEntity)
+                .map(pet -> {
+                    PetBuilderDto.Builder builder = new PetBuilderDto.Builder();
+                    builder.setId(pet.getId()).setNickname(pet.getNickname()).setPetKind(pet.getKind())
+                            .setOwner(pet.getOwner());
+                    return builder.build();
+                })
                 .toList();
     }
 

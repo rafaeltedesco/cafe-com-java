@@ -5,6 +5,8 @@ import com.minhaempresa.petshop.enums.PetKind;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Optional;
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @ToString @EqualsAndHashCode
@@ -17,8 +19,11 @@ public class Pet {
     private String nickname;
     private PetKind kind;
 
+
     @ManyToOne
     @JoinColumn(name="owner_id")
+    // importante!!!
+    @ToString.Exclude
     private Owner owner;
     public Pet(PetPayloadDTO petDTO) {
         this.nickname = petDTO.nickname();

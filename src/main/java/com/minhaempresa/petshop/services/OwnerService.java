@@ -1,6 +1,7 @@
 package com.minhaempresa.petshop.services;
 
 import com.minhaempresa.petshop.dtos.OwnerPayloadDTO;
+import com.minhaempresa.petshop.dtos.OwnerResponseDTO;
 import com.minhaempresa.petshop.entities.Owner;
 import com.minhaempresa.petshop.exceptions.throwables.ThrowableFactory;
 import com.minhaempresa.petshop.repositories.OwnerRepository;
@@ -15,8 +16,8 @@ public class OwnerService {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    public List<Owner> findAll() {
-        return this.ownerRepository.findAll();
+    public List<OwnerResponseDTO> findAll() {
+        return this.ownerRepository.findAll().stream().map(OwnerResponseDTO::fromEntity).toList();
     }
 
     public Owner findById(Long id) {

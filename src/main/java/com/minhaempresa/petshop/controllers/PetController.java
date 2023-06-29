@@ -22,7 +22,7 @@ public class PetController {
         return this.petService.create(petDto);
     }
     @GetMapping
-    public List<PetResponseDTO> findAll() {
+    public List<PetBuilderDto> findAll() {
        return this.petService.findAll();
     }
     @GetMapping("{id}")
